@@ -1,0 +1,13 @@
+names:
+- hand
+- steering-wheel
+nc: 2
+roboflow:
+  license: CC BY 4.0
+  project: steering-wheels-01
+  url: https://universe.roboflow.com/slovak-technical-university/steering-wheels-01/dataset/2
+  version: 2
+  workspace: slovak-technical-university
+test: test/images
+train: train/images
+val: valid/images

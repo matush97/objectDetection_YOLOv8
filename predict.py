@@ -21,27 +21,6 @@ predictions = model(img_path)
 # list bounding boxes
 bounding_boxes = predictions[0].boxes.numpy().boxes
 
-length_bounding_boxes = len(bounding_boxes)
-x = 0
-for i in range(0, length_bounding_boxes):
-    first_array = bounding_boxes[i]
-    for j in range(x, length_bounding_boxes):
-        second_array = bounding_boxes[j]
-        # compare_arrays =
-        if np.array_equal(first_array, second_array):
-            continue
-
-        # area
-        rectangle1 = box(first_array[0], first_array[1], first_array[2], first_array[3])
-        rectangle2 = box(second_array[0], second_array[1], second_array[2], second_array[3])
-
-        intersection = rectangle1.intersection(rectangle2).area / rectangle1.union(rectangle2).area
-
-        print(intersection)
-    x += 1
-
-# print(bounding_boxes)
-
 imageShow = cv2.imread(img_path)
 
 # vykreslenie bounding boxov
@@ -66,9 +45,25 @@ for bounding_box in bounding_boxes:
         imageInfo = '%s (%.2f%%)' % ("hand", bounding_box[4])
         cv2.putText(imageShow, imageInfo, start_point, font, 1, (0, 0, 255), 1, cv2.LINE_AA)
 
+# zistovanie prekrytia ruk a volantu
+length_bounding_boxes = len(bounding_boxes)
+x = 0
+for i in range(0, length_bounding_boxes):
+    first_array = bounding_boxes[i]
+    for j in range(x, length_bounding_boxes):
+        second_array = bounding_boxes[j]
+        # compare_arrays =
+        if np.array_equal(first_array, second_array):
+            continue
 
-# TODO zistovanie prekrytia ruk a volantu
+        # area
+        rectangle1 = box(first_array[0], first_array[1], first_array[2], first_array[3])
+        rectangle2 = box(second_array[0], second_array[1], second_array[2], second_array[3])
 
+        intersection = rectangle1.intersection(rectangle2).area / rectangle1.union(rectangle2).area
+
+        print(intersection)
+    x += 1
 
 cv2.imwrite("example_with_bounding_boxes.jpg", imageShow)
 cv2.imshow('Photo', imageShow)

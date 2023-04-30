@@ -9,7 +9,8 @@ path = "datasets/test/images/IMG_20230219_143401_jpg.rf.22d766e08fa08b90d1925866
 
 results = model.predict(
     source=path,
-    conf=0.25
+    conf=0.25,
+    save=True
 )
 
 print(results)

@@ -2,8 +2,6 @@ from ultralytics import YOLO
 
 # from IPython.display import display, Image
 
-# Download model and dataset
-model = YOLO('yolov8n.pt')
 # results = model.predict(
 #     source='./volant.jpg',
 #     conf=0.25
@@ -22,11 +20,13 @@ from roboflow import Roboflow
 # project = rf.workspace("slovak-technical-university").project("steering-wheels-01")
 # dataset = project.version(2).download("yolov8")
 
+# Download model and dataset
+model = YOLO('yolov8n.pt')
 # Train model
 path = "data.yaml"
 
 # Use the model
-model.train(data=path, epochs=25, imgsz=640)  # train the model
+model.train(data=path, epochs=25, imgsz=224)  # train the model
 metrics = model.val()  # evaluate model performance on the validation set
 results = model("volant.jpg")  # predict on an image
 success = model.export(format="onnx")  # export the model to ONNX format

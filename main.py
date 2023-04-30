@@ -4,7 +4,7 @@ from ultralytics import YOLO
 # Constants
 path = "data.yaml"
 
-# Download model and datasets
+# Download model
 model = YOLO('yolov8n.pt')
 
 # Train the model

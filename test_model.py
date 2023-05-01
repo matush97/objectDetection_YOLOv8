@@ -1,7 +1,8 @@
 # Importing the libraries
 from ultralytics import YOLO
 import cv2
-from shapely.geometry import box
+
+from function import calculation_number_hand
 
 # Constants
 img_path = "test_photo/image1.jpg"
@@ -47,37 +48,14 @@ for bounding_box in bounding_boxes:
     imageInfo = '%s (%.2f%%)' % (object_name, bounding_box[4])
     cv2.putText(imageShow, imageInfo, start_point, font, 2, object_color, 4, cv2.LINE_AA)
 
-# Hand and steering wheel overlap detection
-length_bounding_boxes = len(bounding_boxes)
-count_prediction = 0
+# Calculation number of hands on steering wheel
+count_hand_on_wheel = calculation_number_hand(bounding_boxes)
 
-for i in range(0, length_bounding_boxes):
-    first_array = bounding_boxes[i]
-
-    # if there is no class for hand-hold
-    if first_array[class_position] != 0:
-        continue
-
-    for j in range(0, length_bounding_boxes):
-        second_array = bounding_boxes[j]
-
-        # if there is no class for steering-wheel
-        if second_array[class_position] != 2:
-            continue
-
-        # area
-        rectangle1 = box(first_array[0], first_array[1], first_array[2], first_array[3])
-        rectangle2 = box(second_array[0], second_array[1], second_array[2], second_array[3])
-
-        intersection = rectangle1.intersection(rectangle2).area / rectangle1.union(rectangle2).area
-
-        if intersection > 0:
-            count_prediction += 1
 
 output = "not_hold"
-if count_prediction == 1:
+if count_hand_on_wheel == 1:
     output = "one_hand_hold"
-elif count_prediction == 2:
+elif count_hand_on_wheel == 2:
     output = "two_hand_hold"
 
 print(output)

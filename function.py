@@ -76,4 +76,4 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    plt.savefig("mygraph.png")
+    plt.savefig("classes_confusion_matrix.png")

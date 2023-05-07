@@ -1,12 +1,7 @@
-# Download dataset from Roboflow
+# Importing the libraries
 from roboflow import Roboflow
 
-# version 1
-# rf = Roboflow(api_key="PJxJ3H7MF1K3bJprv5KA")
-# project = rf.workspace("slovak-technical-university").project("steering-wheels-01")
-# datasets = project.version(1).download("yolov8")
-
-# version 2
-rf = Roboflow(api_key="PJxJ3H7MF1K3bJprv5KA")
-project = rf.workspace("slovak-technical-university").project("steering-wheels-syntetic-data")
-dataset = project.version(3).download("yolov8")
+# Download dataset from Roboflow
+rf = Roboflow(api_key="YOUR_API_KEY")
+project = rf.workspace("WORKSPACE").project("PROJECT")
+dataset = project.version(1).download("yolov8")

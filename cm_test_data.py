@@ -1,6 +1,5 @@
 # Importing the libraries
 from ultralytics import YOLO
-import os
 import numpy as np
 
 from function import get_photos_folder, calculation_number_hand, plot_confusion_matrix

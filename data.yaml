@@ -5,9 +5,9 @@ names:
 nc: 3
 roboflow:
   license: CC BY 4.0
-  project: steering-wheels-syntetic-data
-  url: https://universe.roboflow.com/slovak-technical-university/steering-wheels-syntetic-data/dataset/3
-  version: 3
+  project: steering-wheels-detection-02
+  url: https://universe.roboflow.com/slovak-technical-university/steering-wheels-detection-02/dataset/1
+  version: 1
   workspace: slovak-technical-university
 path: ../objectDetection/datasets
 test: test/images

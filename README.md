@@ -32,3 +32,6 @@ obsahuje názov triedy (not_hold, one_hand_hold a two_hand_hold). Každý z týc
 musí obsahovať testovacie fotografie. Posledným vstupným parametrom je natrénovaný model.
 
 Výstupom je konfúzna matica tried (not_hold, one_hand_hold a two_hand_hold).
+
+## function.py
+Pomocné funkcie, ktoré sa používajú na prácu s jednotlivými súbormi.
